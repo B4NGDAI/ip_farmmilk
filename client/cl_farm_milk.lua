@@ -96,7 +96,7 @@ AddEventHandler('ip_farm:client:milkinganimation', function()
     TaskPlayAnim(cache.ped, milkingAnimaton, milkingAnim, 3.0, 3.0, -1, 1, 0, false, false, false)
 end)
 
-local milkingCooldown = {} -- tabel untuk menyimpan hewan yang telah diperas
+local milkingCooldown = {}
 
 RegisterNetEvent('ip_farm:client:milking')
 AddEventHandler('ip_farm:client:milking', function()
