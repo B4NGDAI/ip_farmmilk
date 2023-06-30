@@ -109,7 +109,7 @@ AddEventHandler('ip_farm:client:milking', function()
         local playerPos = GetEntityCoords(cache.ped)
         for _, animal in ipairs(spawnedAnimals) do
             local distance = #(playerPos - GetEntityCoords(animal))
-            if distance <= 3.5 and not IsEntityDead(animal) and not milkingCooldown[animal] then -- tambahkan kondisi untuk memeriksa apakah hewan dalam cooldown atau tidak
+            if distance <= 3.5 and not IsEntityDead(animal) and not milkingCooldown[animal] then
                 table.insert(nearbyAnimals, animal)
             end
         end
@@ -125,8 +125,8 @@ AddEventHandler('ip_farm:client:milking', function()
                 TriggerServerEvent('ip_farm:server:giveitem', 'milk', math.random(2,5))
                 ClearPedTasks(cache.ped)
                 FreezeEntityPosition(cache.ped, false)
-                milkingCooldown[animal] = true -- tambahkan hewan yang diperas ke dalam tabel cooldown
-                SetTimeout(5000, function() -- setelah 1 menit, hapus hewan dari tabel cooldown
+                milkingCooldown[animal] = true
+                SetTimeout(5000, function()
                     milkingCooldown[animal] = DeleteEntity(animal)
                 end)
             end)
